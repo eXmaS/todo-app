@@ -1,15 +1,18 @@
+import debounce from 'lodash/debounce';
 import { StoreState } from '.';
 import { Todo } from '../interfaces/Todo';
 
-export const saveTodos = (todos: Todo[]): void => {
-  console.log('TODOS SAVED');
+export const saveTodos = debounce(
+  (todos: Todo[]) => {
+    try {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    } catch {}
+  },
+  500,
+  { leading: true, trailing: true }
+);
 
-  try {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  } catch {}
-};
-
-export const loadTodos = (): StoreState => {
+export const loadTodos = (): { todos: StoreState['todos'] } => {
   try {
     return {
       todos: JSON.parse(localStorage.getItem('todos') || '[]'),

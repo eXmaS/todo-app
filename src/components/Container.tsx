@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 
 interface Props {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ const StyledSection = styled.section((props) => ({
 
 const StyledMain = styled.main((props) => ({
   width: '100%',
-  maxWidth: '500px',
+  maxWidth: '300px',
   paddingTop: '64px',
   fontSize: '1.2rem',
 }));

@@ -1,4 +1,4 @@
-import { Todo } from '../interfaces/Todo';
+import { Todo } from '../../interfaces/Todo';
 
 interface AddTodoAction {
   type: 'ADD_TODO';
@@ -10,7 +10,12 @@ interface RemoveTodoAction {
   payload: number;
 }
 
-export type Action = AddTodoAction | RemoveTodoAction;
+interface ToggleTodoDoneAction {
+  type: 'TOGGLE_TODO';
+  payload: number;
+}
+
+export type Action = AddTodoAction | RemoveTodoAction | ToggleTodoDoneAction;
 
 export const addTodo = (text: string): AddTodoAction => {
   return {
@@ -26,6 +31,13 @@ export const addTodo = (text: string): AddTodoAction => {
 export const removeTodo = (id: number): RemoveTodoAction => {
   return {
     type: 'REMOVE_TODO',
+    payload: id,
+  };
+};
+
+export const toggleTodoDone = (id: number): ToggleTodoDoneAction => {
+  return {
+    type: 'TOGGLE_TODO',
     payload: id,
   };
 };

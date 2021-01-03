@@ -1,16 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineReducers } from 'redux';
-import todosReducer from './reducer';
-import { loadTodos, saveTodos } from './localStorage';
+import { Filter } from '../interfaces/Filter';
 import { Todo } from '../interfaces/Todo';
+import { filterReducer } from './filter/filterReducer';
+import { loadTodos, saveTodos } from './localStorage';
+import { todosReducer } from './todos/todosReducer';
 
 export interface StoreState {
   todos: Todo[];
+  filter: Filter;
 }
 
 const rootReducer = combineReducers<StoreState>({
   todos: todosReducer,
+  filter: filterReducer,
 });
 
 const composedEnhancer = composeWithDevTools();
