@@ -12,7 +12,7 @@ export type Action = SetTextFilterAction | ToggleDoneFilterAction;
 export const setTextFilter = (text: string): SetTextFilterAction => {
   return {
     type: 'SET_TEXT',
-    payload: text.toLowerCase(),
+    payload: text,
   };
 };
 

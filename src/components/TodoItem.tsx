@@ -14,9 +14,12 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
   const dispatch = useDispatch();
 
   return (
-    <Box mt={16} style={{ border: '1px solid black' }}>
+    <Box mt={16}>
       <TodoText todo={todo} onClick={() => dispatch(toggleTodoDone(todo.id))} />
-      <DeleteButton onClick={() => dispatch(removeTodo(todo.id))} />
+      <DeleteButton
+        title="Delete"
+        onClick={() => dispatch(removeTodo(todo.id))}
+      />
     </Box>
   );
 };
